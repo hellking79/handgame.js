@@ -33,7 +33,6 @@ let i=0;
 //its a function that let the computer to choose
 //rock,paper,scissors at randome
 
-// a funcrion that plays 5 rounds and keep track of the rounds  and how much
 // you wone and the computer wone
 { 
     //let player=alert(`round${i+1}:what do you choose(rock,paper,scissors?`);
