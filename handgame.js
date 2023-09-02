@@ -18,74 +18,82 @@ const papers=document.querySelector(`#papers`)
 const scissors=document.querySelector(`#scissors`)
  let PlayerChoice;
 //eventlisteners
-rocks.addEventListener(`click`,()=>{
-  PlayerChoice=`rock`
+rocks.addEventListener(`click`,e=>{
+  PlayerChoice=(`rock`);
+  playround(PlayerChoice)
 })
-papers.addEventListener(`click`,()=>{
-  PlayerChoice=`paper`
-})scissors.addEventListener(`click`,()=>{
-  PlayerChoice=`scissor`
+papers.addEventListener(`click`,e=>{
+  PlayerChoice=(`paper`);
+  playround(PlayerChoice)
+})
+scissors.addEventListener(`click`,e=>{
+  PlayerChoice=(`scissor`);
+  playround(PlayerChoice)
 })
 let p=0;
 let c=0;
-let i=0;
+
 
 //its a function that let the computer to choose
 //rock,paper,scissors at randome
 
+// a funcrion that plays 5 rounds and keep track of the rounds  and how much
 // you wone and the computer wone
-{ 
+
     //let player=alert(`round${i+1}:what do you choose(rock,paper,scissors?`);
+   function updateresults(message){
+    const resultsDiv=document.querySelector(`#results`)
+    resultsDiv.textContent=message;
+   }
+   function playround(PlayerChoice){
+    function getcomputerchoice(){
+        let game=[`rock`,`paper`,`scissor`];
+        const rando=game[Math.floor(Math.random()*game.length)];
+        return rando;};
+    
     let comp=getcomputerchoice();
    
     if(PlayerChoice===`rock`&&comp===`scissors`){
-        alert(`you win rock beats scissors`)
+        updateresults(`you win rock beats scissor`)
         p++
     }
     else if(PlayerChoice===`scissors`&&comp===`rock`){
-        alert(`you lose rock beats scissors`)
+        updateresults(`you lose rock beats scissor`)
         c++
     }
     else if(PlayerChoice===`paper`&&comp===`rock`){
-        alert(`you win paper beats rock`)
+        updateresults(`you win paper beats rock`)
         p++
     }
     else if(PlayerChoice===`rock`&&comp===`paper`){
-        alert(`you lose paper beats scissors`)
+        updateresults(`you lose paper beats scissor`)
         c++
     }
     else if(PlayerChoice===`scissors`&&comp===`paper`){
-        alert(`you win scissors beats rock`)
+        updateresults(`you win scissor beats rock`)
         p++
     }
-    else if(PlayerChoice===`paper`&&comp===`scissors`){
-        alert(`you lose scissors beats paper`)
+    else if(PlayerChoice===`paper`&&comp===`scissor`){
+        updateresults(`you lose scissors beats paper`)
            c++
     }
     else if(PlayerChoice===`rock`&&comp===`rock`){
         p++ 
         c++
-        alert(`its a tie you both chose rock`)
+        updateresults(`its a tie you both chose rock`)
         
     }
         else if(PlayerChoice===`paper`&&comp===`paper`){
-            alert(`its a tie you both chose paper`)
+            updateresults(`its a tie you both chose paper`)
             p++ 
             c++
         }
-       else if(playerChoice===`scissors`&&comp===`scissors`){
-            alert(`its a tie you both chose scissors`)
-            p++ 
-            c++        
-        }
-
-
-        console.log(`Player wins: ${p} Computer wins: ${c}`);
-  
+       else if(PlayerChoice===`scissor`&&comp===`scissor`){ 
+        updateresults(`its a tie you both chose scissor`)
+      p++ 
+      c++        
+        }         
+        updateresults(`Player wins: ${p} Computer wins: ${c}`); 
         
-  }
-function getcomputerchoice(){
-    let game=[`rock`,`paper`,`scissors`];
-    const rando=game[Math.floor(Math.random()*game.length)];
-    return rando;};
-
+    }
+console.log(playround)
